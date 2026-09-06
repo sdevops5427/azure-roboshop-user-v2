@@ -11,17 +11,17 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh "docker build -t cart ."
+                sh "docker build -t user ."
             }
         }
         stage('Tag Image') {
             steps {
-                sh "docker tag cart roboshop0088.azurecr.io/cart:latest"
+                sh "docker tag cart roboshop0088.azurecr.io/user:latest"
             }
         }
         stage('Push Image') {
             steps {
-                sh "docker push roboshop0088.azurecr.io/cart"
+                sh "docker push roboshop0088.azurecr.io/user"
             }
         }
     }
