@@ -9,20 +9,24 @@ pipeline {
                     url: 'https://github.com/sdevops5427/roboshop-user-v1.git'
             }
         }
-        stage('ECR Login') {
-            steps {
-                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 012751250483.dkr.ecr.us-east-1.amazonaws.com"
-            }
-        }
         stage('Build Image') {
             steps {
-                sh "docker build -t 012751250483.dkr.ecr.us-east-1.amazonaws.com/user ."
+                sh "docker build -t cart ."
             }
         }
         stage('Push Image') {
             steps {
-                sh "docker push 012751250483.dkr.ecr.us-east-1.amazonaws.com/user"
+                sh "docker tag cart roboshop0088.azurecr.io/cart:latest"
+            }
+        }
+        stage('Push Image') {
+            steps {
+                sh "docker push roboshop0088.azurecr.io/cart"
             }
         }
     }
 }
+
+docker build -t cart .
+docker tag cart roboshop0088.azurecr.io/cart:latest
+docker push roboshop0088.azurecr.io/cart
