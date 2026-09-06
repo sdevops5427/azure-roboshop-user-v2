@@ -14,7 +14,7 @@ pipeline {
                 sh "docker build -t cart ."
             }
         }
-        stage('Push Image') {
+        stage('Tag Image') {
             steps {
                 sh "docker tag cart roboshop0088.azurecr.io/cart:latest"
             }
