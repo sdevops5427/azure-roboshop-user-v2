@@ -26,7 +26,3 @@ pipeline {
         }
     }
 }
-
-docker build -t cart .
-docker tag cart roboshop0088.azurecr.io/cart:latest
-docker push roboshop0088.azurecr.io/cart
